@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>ĐẾM NGƯỢC NGÀY THI TỐT NGHIỆP</title>
+</head>
+<body>
+
+<div id="countdown"></div>
+
+<script>
+// Định nghĩa hàm để tính thời gian còn lại từ ngày hiện tại đến một ngày cụ thể
+function countdownTimer() {
+ const countDownDate = new Date("2024-06-03T00:00:00").getTime(); // Thời gian cụ thể để đếm ngược đến
+  
+ // Cập nhật thời gian mỗi giây
+ const x = setInterval(function() {
+  const now = new Date().getTime(); // Thời gian hiện tại
+  const distance = countDownDate - now; // Tính toán khoảng cách thời gian
+   
+  // Tính toán số lượng ngày, giờ, phút và giây còn lại
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+   
+  // Hiển thị thời gian còn lại trong thẻ div có id="countdown"
+  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+   
+  // Khi thời gian đếm ngược kết thúc, hiển thị thông báo
+  if (distance < 0) {
+   clearInterval(x);
+   document.getElementById("countdown").innerHTML = "EXPIRED";
+  }
+ }, 1000); // Cập nhật mỗi 1 giây
+}
+
+// Gọi hàm countdownTimer để bắt đầu đếm ngược
+countdownTimer();
+</script>
+</body>
+</html>
